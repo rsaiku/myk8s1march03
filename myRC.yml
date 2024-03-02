@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: myjavaapp-rc
+spec:
+  replicas: 3
+  selector:
+    app: myjavaapp
+    
+  template:
+    metadata:
+      name: myjavaapp
+      labels:
+        app: myjavaapp
+    spec:
+      containers:
+        - name: myjavaappcontainer
+          image: mahaiac/myonlinebooking:1
+          ports:
+            - containerPort: 8080
